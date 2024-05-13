@@ -6,13 +6,13 @@ services:
     environment:
       - PUID=118
       - PGID=65534
-      - TZ=Asia/Kolkata  # Set timezone to India
+      - TZ=****
       - UMASK_SET=022
       - WEBUI_PORT=8091
     volumes:
       - /srv/torrenting-stack/dockerdata/qbt/config:/config
-      - /srv/dev-disk-by-uuid-9dbf2b75-e0d6-450b-95d2-99cd172c65ce/mnt/ssd/Downloads:/downloads
-      - /srv/dev-disk-by-uuid-9dbf2b75-e0d6-450b-95d2-99cd172c65ce/mnt/ssd/Seeding:/seeding
+      - /srv/dev-disk-by-uuid-******/mnt/ssd/Downloads:/downloads
+      - /srv/dev-disk-by-uuid-******/mnt/ssd/Seeding:/seeding
     restart: unless-stopped
     ports:
       - 8091:8091
@@ -25,7 +25,7 @@ services:
     environment:
       - PUID=118
       - PGID=65534
-      - TZ=Asia/Kolkata  # Set timezone to India
+      - TZ=****
     volumes:
       - /srv/torrenting-stack/dockerdata/prowlarr:/config
     restart: unless-stopped
@@ -40,12 +40,12 @@ services:
     environment:
       - PUID=118
       - PGID=65534
-      - TZ=Asia/Kolkata  # Set timezone to India
+      - TZ=****
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /srv/torrenting-stack/dockerdata/sonarr/config:/config
-      - /srv/tvshows:/tvshows  # Assuming /srv/tvshows is the directory where your TV shows are stored
-      - /srv/Qbittorrent/Downloads:/downloads  # Adjust to match the download directory used by qBittorrent
+      - /srv/tvshows:/tvshows  
+      - /srv/Qbittorrent/Downloads:/downloads
     restart: unless-stopped
     ports:
       - 8989:8989
@@ -58,12 +58,12 @@ services:
     environment:
       - PUID=118
       - PGID=65534
-      - TZ=Asia/Kolkata  # Set timezone to India
+      - TZ=**** 
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /srv/torrenting-stack/dockerdata/radarr/config:/config
-      - /srv/Qbittorrent/FilmDownloads:/downloads  # Adjust to match the download directory used by qBittorrent
-      - /srv/movies:/movies  # Assuming /srv/movies is the directory where your movies are stored
+      - /srv/Qbittorrent/FilmDownloads:/downloads
+      - /srv/movies:/movies
     restart: unless-stopped
     ports:
       - 7878:7878
