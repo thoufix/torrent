@@ -1,18 +1,17 @@
 services:
-
   qbittorrent:
     image: linuxserver/qbittorrent
     container_name: qbittorrent
     environment:
       - PUID=118
       - PGID=65534
-      - TZ=****
+      - TZ=Asia/Kolkata
       - UMASK_SET=022
       - WEBUI_PORT=8091
     volumes:
       - /srv/torrenting-stack/dockerdata/qbt/config:/config
-      - /srv/dev-disk-by-uuid-******/mnt/ssd/Downloads:/downloads
-      - /srv/dev-disk-by-uuid-******/mnt/ssd/Seeding:/seeding
+      - /srv/dev-disk-by-uuid-9dbf2b75-e0d6-450b-95d2-99cd172c65ce/mnt/ssd/Downloads:/downloads
+      - /srv/dev-disk-by-uuid-9dbf2b75-e0d6-450b-95d2-99cd172c65ce/mnt/ssd/Seeding:/seeding
     restart: unless-stopped
     ports:
       - 8091:8091
@@ -25,7 +24,7 @@ services:
     environment:
       - PUID=118
       - PGID=65534
-      - TZ=****
+      - TZ=Asia/Kolkata
     volumes:
       - /srv/torrenting-stack/dockerdata/prowlarr:/config
     restart: unless-stopped
@@ -40,7 +39,7 @@ services:
     environment:
       - PUID=118
       - PGID=65534
-      - TZ=****
+      - TZ=Asia/Kolkata
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /srv/torrenting-stack/dockerdata/sonarr/config:/config
@@ -58,7 +57,7 @@ services:
     environment:
       - PUID=118
       - PGID=65534
-      - TZ=**** 
+      - TZ=Asia/Kolkata
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /srv/torrenting-stack/dockerdata/radarr/config:/config
@@ -69,5 +68,3 @@ services:
       - 7878:7878
     networks:
       - default
-
-
