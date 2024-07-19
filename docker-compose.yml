@@ -3,15 +3,15 @@ services:
     image: linuxserver/qbittorrent
     container_name: qbittorrent
     environment:
-      - PUID=118
-      - PGID=65534
+      - PUID=1000
+      - PGID=1000
       - TZ=Asia/Kolkata
       - UMASK_SET=022
       - WEBUI_PORT=8091
     volumes:
       - /srv/torrenting-stack/dockerdata/qbt/config:/config
-      - /srv/dev-disk-by-uuid-9dbf2b75-e0d6-450b-95d2-99cd172c65ce/mnt/ssd/Downloads:/downloads
-      - /srv/dev-disk-by-uuid-9dbf2b75-e0d6-450b-95d2-99cd172c65ce/mnt/ssd/Seeding:/seeding
+      - /mnt/ssd/mnt/ssd/Downloads:/downloads
+      - /mnt/ssd/mnt/ssd/Seeding:/seeding
     restart: unless-stopped
     ports:
       - 8091:8091
@@ -22,8 +22,8 @@ services:
     image: linuxserver/prowlarr:develop
     container_name: prowlarr
     environment:
-      - PUID=118
-      - PGID=65534
+      - PUID=1000
+      - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
       - /srv/torrenting-stack/dockerdata/prowlarr:/config
@@ -37,14 +37,14 @@ services:
     image: linuxserver/sonarr:latest
     container_name: sonarr
     environment:
-      - PUID=118
-      - PGID=65534
+      - PUID=1000
+      - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /srv/torrenting-stack/dockerdata/sonarr/config:/config
       - /srv/tvshows:/tvshows  
-      - /srv/Qbittorrent/Downloads:/downloads
+      - /mnt/ssd/mnt/ssd/Downloads:/downloads
     restart: unless-stopped
     ports:
       - 8989:8989
@@ -55,13 +55,13 @@ services:
     image: linuxserver/radarr:latest
     container_name: radarr
     environment:
-      - PUID=118
-      - PGID=65534
+      - PUID=1000
+      - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /srv/torrenting-stack/dockerdata/radarr/config:/config
-      - /srv/Qbittorrent/FilmDownloads:/downloads
+      - /mnt/ssd/mnt/ssd/Downloads:/downloads
       - /srv/movies:/movies
     restart: unless-stopped
     ports:
